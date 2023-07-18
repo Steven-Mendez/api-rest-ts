@@ -1,12 +1,13 @@
 import { Request, Response } from 'express';
-import { handleHttp } from '../utils/error.handle';
+import dbConnect from '../config/mongo';
 import {
-  deleteCar,
-  getCar,
+  insertCar,
   getCars,
-  insertCart,
+  getCar,
   updateCar,
+  deleteCar,
 } from '../services/item';
+import { handleHttp } from '../utils/error.handle';
 
 const getItem = async ({ params }: Request, res: Response) => {
   try {
@@ -28,7 +29,7 @@ const getItems = async (req: Request, res: Response) => {
   }
 };
 
-const updateItems = async ({ params, body }: Request, res: Response) => {
+const updateItem = async ({ params, body }: Request, res: Response) => {
   try {
     const { id } = params;
     const response = await updateCar(id, body);
@@ -38,9 +39,9 @@ const updateItems = async ({ params, body }: Request, res: Response) => {
   }
 };
 
-const postItems = async ({ body }: Request, res: Response) => {
+const postItem = async ({ body }: Request, res: Response) => {
   try {
-    const responseItem = await insertCart(body);
+    const responseItem = await insertCar(body);
     res.send(responseItem);
   } catch (e) {
     handleHttp(res, 'ERROR_POST_ITEM', e);
@@ -57,4 +58,4 @@ const deleteItem = async ({ params }: Request, res: Response) => {
   }
 };
 
-export { getItem, getItems, postItems, updateItems, deleteItem };
+export { getItem, getItems, postItem, updateItem, deleteItem };

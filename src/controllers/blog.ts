@@ -1,28 +1,29 @@
 import { Request, Response } from 'express';
+import dbConnect from '../config/mongo';
 import { handleHttp } from '../utils/error.handle';
 
-const getBlog = (req: Request, res: Response) => {
+const getItem = (req: Request, res: Response) => {
   try {
   } catch (e) {
     handleHttp(res, 'ERROR_GET_BLOG');
   }
 };
 
-const getBlogs = (req: Request, res: Response) => {
+const getItems = (req: Request, res: Response) => {
   try {
   } catch (e) {
     handleHttp(res, 'ERROR_GET_BLOGS');
   }
 };
 
-const updateBlogs = (req: Request, res: Response) => {
+const updateItem = (req: Request, res: Response) => {
   try {
   } catch (e) {
     handleHttp(res, 'ERROR_UPDATE_BLOG');
   }
 };
 
-const postBlogs = ({ body }: Request, res: Response) => {
+const postItem = ({ body }: Request, res: Response) => {
   try {
     res.send(body);
   } catch (e) {
@@ -30,11 +31,11 @@ const postBlogs = ({ body }: Request, res: Response) => {
   }
 };
 
-const deleteBlog = (req: Request, res: Response) => {
+const deleteItem = (req: Request, res: Response) => {
   try {
   } catch (e) {
     handleHttp(res, 'ERROR_DELETE_BLOG');
   }
 };
 
-export { getBlog, getBlogs, postBlogs, updateBlogs, deleteBlog };
+export { getItem, getItems, postItem, updateItem, deleteItem };

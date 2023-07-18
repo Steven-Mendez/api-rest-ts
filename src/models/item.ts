@@ -1,8 +1,12 @@
-import { Schema, Types, Model, model } from 'mongoose';
-import { Car } from '../interface/car.interface';
+import { Schema, Types, model, Model } from 'mongoose';
+import { Car } from '../interfaces/car.interface';
 
 const ItemSchema = new Schema<Car>(
   {
+    name: {
+      type: String,
+      required: true,
+    },
     color: {
       type: String,
       required: true,
@@ -32,5 +36,4 @@ const ItemSchema = new Schema<Car>(
 );
 
 const ItemModel = model('items', ItemSchema);
-
 export default ItemModel;

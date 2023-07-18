@@ -1,11 +1,11 @@
-import { Schema, Types, Model, model } from 'mongoose';
-import { User } from '../interface/user.interface';
+import { Schema, Types, model, Model } from 'mongoose';
+import { User } from '../interfaces/user.interface';
 
 const UserSchema = new Schema<User>(
   {
     name: {
-      type: String,
       required: true,
+      type: String,
     },
     password: {
       type: String,
@@ -18,15 +18,14 @@ const UserSchema = new Schema<User>(
     },
     description: {
       type: String,
-      default: 'Descripción por defecto',
+      default: 'Soy la descripcion',
     },
   },
   {
-    timestamps: true,
     versionKey: false,
+    timestamps: true,
   }
 );
 
 const UserModel = model('users', UserSchema);
-
 export default UserModel;

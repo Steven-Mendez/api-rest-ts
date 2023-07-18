@@ -1,4 +1,4 @@
-export default interface Auth {
+export interface Auth {
   email: string;
   password: string;
 }
